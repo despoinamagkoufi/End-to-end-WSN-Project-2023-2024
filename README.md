@@ -44,20 +44,20 @@
 Στον κόμβο πατέρα, εκτελέστε την εφαρμογή για να συλλέξετε δεδομένα από τους αισθητήρες και να τα
 στείλετε στον named pipe.
 
-- #### make TARGET=sky PORT=/dev/ttyUSB0 serialdump > out_pipe
+ #### make TARGET=sky PORT=/dev/ttyUSB0 serialdump > out_pipe
 
 - 3. Αποθήκευση Δεδομένων σε MongoDB
 
 Εκτελέστε το Python script store_data.py για την αποθήκευση των δεδομένων από τον named pipe στη
 MongoDB.
 
-- #### python3 store_data.py
+ #### python3 store_data.py
 
 - 4. Εκκίνηση Flask Server
 
 Εκτελέστε την εφαρμογή Flask για την οπτικοποίηση των δεδομένων.
 
-- #### python3 app.py
+ #### python3 app.py
 
 Η εφαρμογή θα τρέξει στο http://127.0.0.1:5000.
 
