@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Sensor Dashboard</title>   
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #3b3b98;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #596275;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #graph {
+            width: 80%;
+            height: 400px;
+            background-color: #fff;
+            border: 2px solid #3b3b98;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        #historyForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin: 10px 0 5px;
+        }
+
+        input[type="datetime-local"], select {
+            padding: 10px;
+            margin: 5px;
+            width: 250px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #3b3b98;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #273c75;
+        }
+
+        #history {
+            width: 80%;
+            min-height: 100px;
+            background-color: #fff;
+            border: 2px solid #596275;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Sensor Data</h1>
+    <div id="graph"></div>
+
+    <h2>Retrieve Historical Data</h2>
+    <form id="historyForm">
+        <label for="start">Start Date (YYYY-MM-DD):</label>
+        <input type="datetime-local" id="start" name="start" required>
+
+        <label for="end">End Date (YYYY-MM-DD):</label>
+        <input type="datetime-local" id="end" name="end" required>
+
+        <!-- Dropdown to choose between sensors -->
+        <label for="sensor">Choose Sensor:</label>
+        <select id="sensor" name="sensor">
+            <option value="sensor1">Sensor 1</option>
+            <option value="sensor2">Sensor 2</option>
+            <option value="both">Both Sensors</option>
+        </select>
+
+        <button type="submit">Get Historical Data</button>
+    </form>
+
+    <div id="history"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
